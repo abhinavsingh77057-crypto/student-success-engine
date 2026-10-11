@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Success & Intervention Engine</title>
+    <!-- External UI and Data Libraries -->
+    <script src="https://jsdelivr.net"></script>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <!-- Global Toast Alert Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation Controls -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-graduation-cap brand-icon"></i>
+                <div>
+                    <h2>SS&IE Portal</h2>
+                    <span>Admin Sandbox v1.0</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="overview-section"><i class="fa-solid fa-chart-pie"></i> Executive Overview</button>
+                <button class="nav-item" data-target="directory-section"><i class="fa-solid fa-address-book"></i> Student Directory</button>
+                <button class="nav-item" data-target="queue-section"><i class="fa-solid fa-triangle-exclamation"></i> Advisor Queue</button>
+                <button class="nav-item" data-target="history-section"><i class="fa-solid fa-clock-rotate-left"></i> Action History</button>
+                <button class="nav-item" data-target="metrics-section"><i class="fa-solid fa-microchip"></i> Engine Analytics</button>
+            </nav>
+            <div class="sidebar-footer">
+                <p><i class="fa-solid fa-shield-halved"></i> Synthetic Deployment Mode</p>
+            </div>
+        </aside>
+
+        <!-- Main Body Content Workspace -->
+        <main class="content-space">
+            <header class="top-header">
+                <div class="header-titles">
+                    <h1>Student Success & Intervention Engine</h1>
+                    <p class="subtitle">Detect Early. Understand Risk. Coordinate Support.</p>
+                </div>
+                <div class="system-time">
+                    <i class="fa-regular fa-calendar"></i> <span id="current-date">October 2026</span>
+                </div>
+            </header>
+
+            <!-- Application Universal Loading Screen Mask -->
+            <div id="global-loader" class="loader-mask hidden">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- SECTION A: EXECUTIVE DASHBOARD OVERVIEW -->
+            <section id="overview-section" class="app-section">
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon blue-bg"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-info"><h3>Total Managed Students</h3><h2 id="kpi-total">-</h2></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon green-bg"><i class="fa-solid fa-award"></i></div>
+                        <div class="kpi-info"><h3>Average GPA</h3><h2 id="kpi-gpa">-</h2></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon teal-bg"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div class="kpi-info"><h3>Mean Attendance</h3><h2 id="kpi-attendance">-</h2></div>
+                    </div>
+                    <div class="kpi-card risk-high-border">
+                        <div class="kpi-icon red-bg"><i class="fa-solid fa-skull-crossbones"></i></div>
+                        <div class="kpi-info"><h3>High Risk Triggers</h3><h2 id="kpi-high">-</h2></div>
+                    </div>
+                    <div class="kpi-card risk-med-border">
+                        <div class="kpi-icon amber-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-info"><h3>Medium Risk State</h3><h2 id="kpi-med">-</h2></div>
+                    </div>
+                    <div class="kpi-card primary-border">
+                        <div class="kpi-icon violet-bg"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                        <div class="kpi-info"><h3>Action Queue Size</h3><h2 id="kpi-interv">-</h2></div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-wrapper"><div class="chart-header"><h3>Inference Category Distribution</h3></div><canvas id="chart-risk-dist"></canvas></div>
+                    <div class="chart-wrapper"><div class="chart-header"><h3>Academic GPA Allocation Stratum</h3></div><canvas id="chart-gpa-dist"></canvas></div>
+                    <div class="chart-wrapper large-chart"><div class="chart-header"><h3>Multivariate Correlation Matrix (Attendance vs GPA)</h3></div><canvas id="chart-scatter"></canvas></div>
+                </div>
+            </section>
+
+            <!-- SECTION B: STUDENT REGISTRY DIRECTORY -->
+            <section id="directory-section" class="app-section hidden">
+                <div class="filter-action-bar">
+                    <div class="search-input-group">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="dir-search" placeholder="Query Student System ID...">
+                    </div>
+                    <div class="select-group">
+                        <select id="dir-risk-filter">
+                            <option value="">All Structural Categories</option>
+                            <option value="HIGH RISK">High Risk</option>
+                            <option value="MEDIUM RISK">Medium Risk</option>
+                            <option value="LOW RISK">Low Risk</option>
+                        </select>
+                    </div>
+                    <div class="select-group">
+                        <select id="dir-sort-by">
+                            <option value="student_id">Sort Vector: ID</option>
+                            <option value="risk_probability">Sort Vector: Risk Percentage</option>
+                            <option value="gpa">Sort Vector: Academic GPA</option>
+                            <option value="attendance">Sort Vector: Attendance</option>
+                        </select>
+                    </div>
+                    <div class="select-group">
+                        <select id="dir-sort-order">
+                            <option value="asc">Ascending Sequence</option>
+                            <option value="desc">Descending Sequence</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Risk Class</th>
+                                <th>High-Risk Probability</th>
+                                <th>GPA</th>
+                                <th>Attendance</th>
+                                <th>LMS Logins</th>
+                                <th>System Interactions</th>
+                                <th>Profile Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="directory-table-body"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-footer">
+                    <span id="pagination-stats">Showing 0 of 0 entries</span>
+                    <div class="pagination-controls">
+                        <button id="btn-prev-page" class="btn btn-secondary btn-sm"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                        <span id="current-page-num">1</span>
+                        <button id="btn-next-page" class="btn btn-secondary btn-sm">Next <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION C: ADVISOR QUEUE MANAGEMENT -->
+            <section id="queue-section" class="app-section hidden">
+                <div class="alert-banner info-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p><strong>Operational Rule:</strong> The priority system dynamically scales automatically using predictive probabilities.</p>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Priority Weight</th>
+                                <th>Student ID</th>
+                                <th>Risk Category</th>
+                                <th>High-Risk Class Prob</th>
+                                <th>Identified Risk Warning Indicators</th>
+                                <th>Execution Actions Routing</th>
+                            </tr>
+                        </thead>
+                        <tbody id="queue-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION D: ACTION HISTORY TRANSACTION LOG -->
+            <section id="history-section" class="app-section hidden">
+                <div class="filter-action-bar">
+                    <div class="search-input-group">
+                        <i class="fa-solid fa-filter"></i>
+                        <input type="text" id="hist-filter-id" placeholder="Filter by Student ID...">
+                    </div>
+                    <div class="select-group">
+                        <select id="hist-filter-status">
+                            <option value="">All Action Statuses</option>
