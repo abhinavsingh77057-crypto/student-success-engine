@@ -477,3 +477,102 @@ body {
     animation: toastIn 0.3s ease forwards;
 }
 
+.toast.toast-success { border-left-color: var(--color-low-risk); }
+.toast.toast-error { border-left-color: var(--color-high-risk); }
+.toast.toast-info { border-left-color: var(--color-primary); }
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Universal Loader & Spinner */
+.loader-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1500;
+}
+
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--color-violet);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Warning and Diagnostic Indicator Badges */
+.indicator-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.indicator-tag.tag-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.indicator-tag.tag-nominal {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+/* Priority Weights in Queue */
+.priority-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.priority-critical {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+.priority-high {
+    background-color: #ffedd5;
+    color: #c2410c;
+    border: 1px solid #fdba74;
+}
+
+.priority-elevated {
+    background-color: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde047;
+}
+
+/* Feature Importance Bar */
+.feature-item {
+    margin-bottom: 14px;
+}

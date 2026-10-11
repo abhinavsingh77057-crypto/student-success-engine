@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Success & Intervention Engine</title>
-    <!-- External UI and Data Libraries -->
-    <script src="https://jsdelivr.net"></script>
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Student Success & Intervention Engine (SS&IE)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -21,18 +27,28 @@
                 <i class="fa-solid fa-graduation-cap brand-icon"></i>
                 <div>
                     <h2>SS&IE Portal</h2>
-                    <span>Admin Sandbox v1.0</span>
+                    <span>Student Success v2.0</span>
                 </div>
             </div>
             <nav class="nav-menu">
-                <button class="nav-item active" data-target="overview-section"><i class="fa-solid fa-chart-pie"></i> Executive Overview</button>
-                <button class="nav-item" data-target="directory-section"><i class="fa-solid fa-address-book"></i> Student Directory</button>
-                <button class="nav-item" data-target="queue-section"><i class="fa-solid fa-triangle-exclamation"></i> Advisor Queue</button>
-                <button class="nav-item" data-target="history-section"><i class="fa-solid fa-clock-rotate-left"></i> Action History</button>
-                <button class="nav-item" data-target="metrics-section"><i class="fa-solid fa-microchip"></i> Engine Analytics</button>
+                <button class="nav-item active" data-target="overview-section">
+                    <i class="fa-solid fa-chart-pie"></i> Executive Overview
+                </button>
+                <button class="nav-item" data-target="directory-section">
+                    <i class="fa-solid fa-address-book"></i> Student Directory
+                </button>
+                <button class="nav-item" data-target="queue-section">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Advisor Queue
+                </button>
+                <button class="nav-item" data-target="history-section">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Action History
+                </button>
+                <button class="nav-item" data-target="metrics-section">
+                    <i class="fa-solid fa-microchip"></i> Engine Analytics
+                </button>
             </nav>
             <div class="sidebar-footer">
-                <p><i class="fa-solid fa-shield-halved"></i> Synthetic Deployment Mode</p>
+                <p><i class="fa-solid fa-shield-halved"></i> Active Intelligence Mode</p>
             </div>
         </aside>
 
@@ -41,10 +57,10 @@
             <header class="top-header">
                 <div class="header-titles">
                     <h1>Student Success & Intervention Engine</h1>
-                    <p class="subtitle">Detect Early. Understand Risk. Coordinate Support.</p>
+                    <p class="subtitle">Early Risk Detection • Real-Time Diagnostics • Coordinated Student Support</p>
                 </div>
                 <div class="system-time">
-                    <i class="fa-regular fa-calendar"></i> <span id="current-date">October 2026</span>
+                    <i class="fa-regular fa-calendar"></i> <span id="current-date">Live Dashboard</span>
                 </div>
             </header>
 
@@ -69,23 +85,32 @@
                         <div class="kpi-info"><h3>Mean Attendance</h3><h2 id="kpi-attendance">-</h2></div>
                     </div>
                     <div class="kpi-card risk-high-border">
-                        <div class="kpi-icon red-bg"><i class="fa-solid fa-skull-crossbones"></i></div>
+                        <div class="kpi-icon red-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <div class="kpi-info"><h3>High Risk Triggers</h3><h2 id="kpi-high">-</h2></div>
                     </div>
                     <div class="kpi-card risk-med-border">
-                        <div class="kpi-icon amber-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-icon amber-bg"><i class="fa-solid fa-bell"></i></div>
                         <div class="kpi-info"><h3>Medium Risk State</h3><h2 id="kpi-med">-</h2></div>
                     </div>
                     <div class="kpi-card primary-border">
-                        <div class="kpi-icon violet-bg"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                        <div class="kpi-icon violet-bg"><i class="fa-solid fa-handshake-angle"></i></div>
                         <div class="kpi-info"><h3>Action Queue Size</h3><h2 id="kpi-interv">-</h2></div>
                     </div>
                 </div>
 
                 <div class="charts-grid">
-                    <div class="chart-wrapper"><div class="chart-header"><h3>Inference Category Distribution</h3></div><canvas id="chart-risk-dist"></canvas></div>
-                    <div class="chart-wrapper"><div class="chart-header"><h3>Academic GPA Allocation Stratum</h3></div><canvas id="chart-gpa-dist"></canvas></div>
-                    <div class="chart-wrapper large-chart"><div class="chart-header"><h3>Multivariate Correlation Matrix (Attendance vs GPA)</h3></div><canvas id="chart-scatter"></canvas></div>
+                    <div class="chart-wrapper">
+                        <div class="chart-header"><h3>Inference Category Distribution</h3></div>
+                        <canvas id="chart-risk-dist"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-header"><h3>Academic GPA Allocation Stratum</h3></div>
+                        <canvas id="chart-gpa-dist"></canvas>
+                    </div>
+                    <div class="chart-wrapper large-chart">
+                        <div class="chart-header"><h3>Multivariate Correlation Matrix (Attendance vs GPA)</h3></div>
+                        <canvas id="chart-scatter"></canvas>
+                    </div>
                 </div>
             </section>
 
@@ -94,7 +119,7 @@
                 <div class="filter-action-bar">
                     <div class="search-input-group">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="dir-search" placeholder="Query Student System ID...">
+                        <input type="text" id="dir-search" placeholder="Query Student System ID (e.g. 1005)...">
                     </div>
                     <div class="select-group">
                         <select id="dir-risk-filter">
@@ -110,6 +135,7 @@
                             <option value="risk_probability">Sort Vector: Risk Percentage</option>
                             <option value="gpa">Sort Vector: Academic GPA</option>
                             <option value="attendance">Sort Vector: Attendance</option>
+                            <option value="lms_logins">Sort Vector: LMS Logins</option>
                         </select>
                     </div>
                     <div class="select-group">
@@ -130,11 +156,13 @@
                                 <th>GPA</th>
                                 <th>Attendance</th>
                                 <th>LMS Logins</th>
-                                <th>System Interactions</th>
+                                <th>Interactions</th>
                                 <th>Profile Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="directory-table-body"></tbody>
+                        <tbody id="directory-table-body">
+                            <tr><td colspan="8" style="text-align:center; padding: 20px;">Loading student records...</td></tr>
+                        </tbody>
                     </table>
                 </div>
 
@@ -152,7 +180,7 @@
             <section id="queue-section" class="app-section hidden">
                 <div class="alert-banner info-banner">
                     <i class="fa-solid fa-circle-info"></i>
-                    <p><strong>Operational Rule:</strong> The priority system dynamically scales automatically using predictive probabilities.</p>
+                    <p><strong>Operational Rule:</strong> The priority system dynamically scales automatically using predictive risk probabilities and academic velocity.</p>
                 </div>
                 <div class="table-container">
                     <table class="data-table">
@@ -166,7 +194,9 @@
                                 <th>Execution Actions Routing</th>
                             </tr>
                         </thead>
-                        <tbody id="queue-table-body"></tbody>
+                        <tbody id="queue-table-body">
+                            <tr><td colspan="6" style="text-align:center; padding: 20px;">Loading priority queue...</td></tr>
+                        </tbody>
                     </table>
                 </div>
             </section>
@@ -181,3 +211,175 @@
                     <div class="select-group">
                         <select id="hist-filter-status">
                             <option value="">All Action Statuses</option>
+                            <option value="Completed">Completed</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Follow-Up Scheduled">Follow-Up Scheduled</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Student ID</th>
+                                <th>Action Type</th>
+                                <th>Assigned Advisor</th>
+                                <th>Status</th>
+                                <th>Operational Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table-body">
+                            <tr><td colspan="6" style="text-align:center; padding: 20px;">Loading transaction history...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION E: ENGINE ANALYTICS -->
+            <section id="metrics-section" class="app-section hidden">
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon violet-bg"><i class="fa-solid fa-brain"></i></div>
+                        <div class="kpi-info"><h3>Model Architecture</h3><h2 style="font-size: 1.1rem;" id="meta-model">Ensemble RF+LR</h2></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon green-bg"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="kpi-info"><h3>Model Accuracy</h3><h2 id="meta-accuracy">94.6%</h2></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon teal-bg"><i class="fa-solid fa-gauge-high"></i></div>
+                        <div class="kpi-info"><h3>Precision & Recall</h3><h2 id="meta-precision">92.8% / 95.1%</h2></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon blue-bg"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="kpi-info"><h3>Inference Latency</h3><h2 id="meta-latency">1.8 ms</h2></div>
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <div class="chart-header"><h3>Predictive Risk Feature Importance Allocation</h3></div>
+                    <div id="feature-importance-list" style="padding-top: 10px;">
+                        <!-- Feature importance bars loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL 1: STUDENT DETAIL MODAL -->
+    <div id="student-detail-modal" class="modal-overlay hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h2>Student Profile Diagnostic: #<span id="modal-student-id">-</span></h2>
+                <button class="close-modal-btn" data-close="student-detail-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
+                    <div>
+                        <span class="badge" id="modal-risk-badge">LOW RISK</span>
+                        <span style="margin-left: 10px; font-weight: 600; font-size: 0.9rem;" id="modal-risk-prob">Risk Prob: 0%</span>
+                    </div>
+                    <button id="modal-btn-intervene-trigger" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-hand-holding-hand"></i> Initiate Intervention
+                    </button>
+                </div>
+
+                <div class="metric-row">
+                    <div class="metric-label-flex">
+                        <span>Cumulative Academic GPA</span>
+                        <span id="modal-gpa-val">0.0 / 4.0</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="modal-gpa-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="metric-label-flex">
+                        <span>Classroom Attendance Rate</span>
+                        <span id="modal-att-val">0.0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="modal-att-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="metric-row">
+                    <div class="metric-label-flex">
+                        <span>LMS Activity & Portal Engagement</span>
+                        <span id="modal-lms-val">0 Logins</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="modal-lms-bar" style="width: 0%; background-color: var(--color-violet);"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 24px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 10px; color: var(--bg-dark-navy);">Identified Risk Factor Diagnostics</h4>
+                    <div id="modal-indicators-list" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+                </div>
+
+                <div style="margin-top: 24px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 10px; color: var(--bg-dark-navy);">Historical Interventions for this Student</h4>
+                    <div id="modal-history-list" style="font-size: 0.85rem; color: var(--text-muted);">None logged yet.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: INTERVENTION ACTION MODAL -->
+    <div id="intervention-modal" class="modal-overlay hidden">
+        <div class="modal-window modal-sm">
+            <div class="modal-header">
+                <h2>Record Intervention: Student #<span id="interv-target-id">-</span></h2>
+                <button class="close-modal-btn" data-close="intervention-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="intervention-form">
+                    <input type="hidden" id="interv-input-id">
+                    
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Intervention Modality</label>
+                        <select id="interv-input-type" class="form-control" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;" required>
+                            <option value="Academic Advising Session">Academic Advising Session</option>
+                            <option value="Academic Tutoring Referral">Academic Tutoring Referral</option>
+                            <option value="Attendance Warning Outreach">Attendance Warning Outreach</option>
+                            <option value="Wellness & Counseling Support">Wellness & Counseling Support</option>
+                            <option value="Emergency Financial Coaching">Emergency Financial Coaching</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Staff / Advisor Representative</label>
+                        <input type="text" id="interv-input-advisor" class="form-control" value="Academic Advisor" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;" required>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Intervention Status</label>
+                        <select id="interv-input-status" class="form-control" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;">
+                            <option value="Completed">Completed</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Follow-Up Scheduled">Follow-Up Scheduled</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Clinical / Advisor Notes</label>
+                        <textarea id="interv-input-notes" class="form-control" rows="3" placeholder="Provide notes regarding the meeting, agreements, or next action items..." style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; resize: vertical;" required></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                        <button type="button" class="btn btn-secondary" data-close="intervention-modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Commit Action</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
